@@ -1,0 +1,136 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# <img src="http://cfs22.simplicdn.net/ice9/new_logo.svgz "/>
+# 
+# # Assignment 02: Evaluate the FDNY Dataset
+# 
+# *The comments/sections provided are your cues to perform the assignment. You don't need to limit yourself to the number of rows/cells provided. You can add additional rows in each section to add more lines of code.*
+# 
+# *If at any point in time you need help on solving this assignment, view our demo video to understand the different steps of the code.*
+# 
+# **Happy coding!**
+# 
+# * * *
+
+# #### 1: View and import the dataset
+
+# In[1]:
+
+
+#Import the required libraries
+import pandas as pd
+
+
+# In[2]:
+
+
+#Import the Fire Department of New York City (FDNY) file
+df = pd.read_csv("FDNY.csv")
+
+
+# #### 2: Analyze the dataset
+
+# In[7]:
+
+
+#View the content of the data
+df.describe
+
+
+# In[9]:
+
+
+#View the first five records
+df.head()
+
+
+# In[18]:
+
+
+#Skip the duplicate header row
+print(df.shape)
+df.drop_duplicates(subset = ['FacilityName'])
+df.shape
+
+
+# In[6]:
+
+
+#Verify if the dataset is fixed
+
+
+# In[19]:
+
+
+#View the data statistics (Hint: use describe() method)
+df.describe()
+
+
+# In[22]:
+
+
+#View the attributes of the dataset (Hint: view the column names)
+df.columns
+
+
+# In[27]:
+
+
+#View the index of the dataset
+df.index
+
+
+# #### 3: Find the total number of fire department facilities in New York city
+
+# In[25]:
+
+
+#Count number of records for each attribute
+df.count()
+
+
+# In[28]:
+
+
+#view the datatypes of all three attributes
+df.dtypes
+
+
+# #### 4: Find the total number of fire department facilities in each borough
+
+# In[29]:
+
+
+#Select FDNY information boroughwise
+boroughwise = df.groupby(['Borough'])
+
+
+# In[32]:
+
+
+#View FDNY informationn for each borough
+boroughwise.count()
+
+
+# #### 5: Find the total number of fire department facilities in Manhattan
+
+# In[35]:
+
+
+#Select FDNY information for Manhattan
+boroughwise_cnt = boroughwise.get_group('Manhattan')
+
+
+# In[41]:
+
+
+#View FDNY information for Manhattan
+boroughwise_cnt
+
+
+# In[ ]:
+
+
+
+
